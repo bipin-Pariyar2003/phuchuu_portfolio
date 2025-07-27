@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div sx={{ padding: "20px", textAlign: "center", backgroundColor: "#f0f0f0" }}>
         <Typography variant="h4" fontFamily={"fantasy"}>
-          Hey I am Bipika
+          Oii ma phuchuuu kkkk
         </Typography>
       </div>
     </>
