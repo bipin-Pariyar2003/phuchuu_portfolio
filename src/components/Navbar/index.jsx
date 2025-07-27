@@ -49,7 +49,7 @@ export default function Navbar() {
         backgroundColor: "#e0f7fa",
         alignItems: "center",
         mx: "auto",
-        px: 5,
+        px: 0,
       }}
     >
       <Box
@@ -57,20 +57,29 @@ export default function Navbar() {
           // borderBottom: 1,
           // borderColor: "divider",
 
-          backgroundColor: "#e0f7fa",
+          backgroundColor: "#FFB5E8",
           alignItems: "center",
           justifyContent: "center",
           display: "flex",
         }}
       >
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Home" {...a11yProps(0)} />
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+          sx={{
+            height: "100px",
+            alignItems: "center",
+            display: "flex",
+          }}
+        >
+          <Tab label="Home" sx={{ color: "#5E5E5E" }} {...a11yProps(0)} />
           <Tab label="About" {...a11yProps(1)} />
           <Tab label="Contact" {...a11yProps(2)} />
         </Tabs>
       </Box>
 
-      <Box sx={{ backgroundColor: "#f0f0f0", minHeight: "100vh" }}>
+      <Box sx={{ backgroundColor: "#FFF8F0", minHeight: "100vh" }}>
         <CustomTabPanel value={value} index={0}>
           <Home />
         </CustomTabPanel>
