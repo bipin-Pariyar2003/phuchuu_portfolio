@@ -9,6 +9,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Home from "../Home";
 import About from "../About";
 import Contact from "../Contact";
+import MyProjects from "../MyProjects";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -75,7 +76,7 @@ export default function Navbar() {
             sx={{ height: 100, display: "flex", alignItems: "center" }}
           >
             <Tab label="Home" sx={{ color: "#5E5E5E" }} />
-            <Tab label="About" />
+            <Tab label="My Projects" />
             <Tab label="Contact" />
           </Tabs>
         </Box>
@@ -87,7 +88,7 @@ export default function Navbar() {
           <Home />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <About />
+          <MyProjects />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
           <Contact />
