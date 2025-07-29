@@ -16,6 +16,7 @@ const Home = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           height: "100vh",
           p: 3,
           backgroundImage:
@@ -23,6 +24,9 @@ const Home = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          overflowX: "hidden",
+
+          alignItems: "center",
         }}
       >
         {/* Text Section */}
@@ -73,11 +77,18 @@ const Home = () => {
           <Box
             sx={{
               flex: 1,
+              display: "flex",
+              justifyContent: "center",
+
               pl: 15,
               animation: `${float} 5s ease-in-out infinite`, // floating image
             }}
           >
-            <img src={bipika} alt="Bipika" style={{ width: "500px" }} />
+            <img
+              src={bipika}
+              alt="Bipika"
+              style={{ width: { md: "500px", xs: "150px" } }}
+            />
           </Box>
         </Box>
       </Box>
