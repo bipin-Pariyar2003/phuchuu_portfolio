@@ -1,57 +1,113 @@
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
+
 function Navbar() {
   const navigate = useNavigate();
-  const handleHome = () => {
-    navigate("/");
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
-  const handleAbout = () => {
-    navigate("/about");
-  };
-  const handleContact = () => {
-    navigate("/contact");
-  };
-  const handleBlog = () => {
-    navigate("/blog");
-  };
-  const handleProjects = () => {
-    navigate("/projects");
-  };
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
+    { label: "Blog", path: "/blog" },
+    { label: "Projects", path: "/projects" },
+  ];
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography variant="h6" sx={{ my: 2, color: "#00e5ff" }}>
+        My Portfolio
+      </Typography>
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item.label} disablePadding>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              onClick={() => navigate(item.path)}
+            >
+              <ListItemText primary={item.label} sx={{ color: "#f1f1f1" }} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
-    <AppBar
-      position="sticky"
-      sx={{
-        height: "",
-        background: "rgba(255, 255, 255, 0.05)",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
-        boxShadow: "none",
-      }}
-    >
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, color: "#f1f1f1" }}>
-          My Portfolio
-        </Typography>
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Button color="primary" onClick={handleHome}>
-            Home
-          </Button>
-          <Button color="primary" onClick={handleAbout}>
-            About
-          </Button>
-          <Button color="primary" onClick={handleContact}>
-            Contact
-          </Button>
-          <Button color="primary" onClick={handleBlog}>
-            Blog
-          </Button>
-          <Button color="primary" onClick={handleProjects}>
-            Projects
-          </Button>
-        </Box>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar
+        position="sticky"
+        sx={{
+          background: "rgba(255, 255, 255, 0.05)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+          boxShadow: "none",
+        }}
+      >
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography variant="h6" sx={{ color: "#f1f1f1" }}>
+            My Portfolio
+          </Typography>
+
+          {/* Desktop Menu */}
+          <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2 }}>
+            {navItems.map((item) => (
+              <Button
+                key={item.label}
+                color="primary"
+                onClick={() => navigate(item.path)}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+
+          {/* Mobile Menu Icon */}
+          <IconButton
+            color="inherit"
+            edge="end"
+            sx={{ display: { xs: "flex", sm: "none" } }}
+            onClick={handleDrawerToggle}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        PaperProps={{
+          sx: {
+            background: "rgba(26, 26, 64, 0.95)",
+            color: "#f1f1f1",
+          },
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </>
   );
 }
 
