@@ -5,16 +5,29 @@ import Contact from "./views/Contact";
 import Blog from "./views/Blog";
 import Projects from "./views/Projects";
 import { Box, CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme"; // 👈 import custom theme
 import "./App.css";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
         sx={{
           minHeight: "100vh",
-          background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+          display: "flex",
+          flexDirection: "column",
+          background: `
+            linear-gradient(
+              135deg,
+              rgba(46, 0, 62, 0.85),
+              rgba(26, 26, 64, 0.8),
+              rgba(13, 50, 77, 0.8)
+            )
+          `,
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)", // Safari fix
           m: 0,
           p: 0,
         }}
@@ -30,7 +43,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </Box>
-    </>
+    </ThemeProvider>
   );
 }
 
