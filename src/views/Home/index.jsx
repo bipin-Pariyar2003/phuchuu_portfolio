@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import { Box, Typography, Button, Avatar } from "@mui/material";
+import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   return (
@@ -37,7 +38,15 @@ const Home = () => {
         {/* Text Section */}
         <Box>
           <Typography variant="h2" sx={{ fontWeight: 700, mb: 2, color: "#00e5ff" }}>
-            Hi, I am Bipika Kumari Chaudhary
+            <Typewriter
+              words={["Hi, I am Bipika Kumari Chaudhary"]}
+              loop={0}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={10000}
+            />
           </Typography>
           <Typography variant="h5" sx={{ mb: 3, color: "#f1f1f1" }}>
             UI/UX Designer & Frontend Developer
