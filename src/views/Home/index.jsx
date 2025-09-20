@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import { Box, Typography, Button, Avatar } from "@mui/material";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
+import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ const Home = () => {
           <Button
             variant="contained"
             color="primary"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, mb: 2 }}
             onClick={handleHireMeClick}
           >
             Hire Me
@@ -94,10 +95,21 @@ const Home = () => {
           <Button
             variant="outlined"
             color="secondary"
-            href="#projects"
+            sx={{ mr: 2, mb: 2 }}
             onClick={handleViewProjectsClick}
           >
             View Projects
+          </Button>
+
+          <Button
+            variant="outlined"
+            sx={{ mb: 2 }}
+            href="/Bipika_Kumari_Chaudhary_Resume.pdf"
+            download
+          >
+            {" "}
+            <DownloadForOfflineIcon sx={{ mr: 1 }} />
+            Download Resume
           </Button>
         </Box>
       </Box>
