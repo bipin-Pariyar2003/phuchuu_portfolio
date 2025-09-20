@@ -13,10 +13,11 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation(); // 👈 get current route
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -40,7 +41,13 @@ function Navbar() {
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
             <ListItemButton
-              sx={{ textAlign: "center" }}
+              sx={{
+                textAlign: "center",
+                borderBottom:
+                  location.pathname === item.path
+                    ? "2px solid #00e5ff"
+                    : "2px solid transparent",
+              }}
               onClick={() => navigate(item.path)}
             >
               <ListItemText primary={item.label} sx={{ color: "#f1f1f1" }} />
@@ -73,8 +80,18 @@ function Navbar() {
             {navItems.map((item) => (
               <Button
                 key={item.label}
-                color="primary"
                 onClick={() => navigate(item.path)}
+                sx={{
+                  color: "#f1f1f1",
+                  borderBottom:
+                    location.pathname === item.path
+                      ? "2px solid #00e5ff"
+                      : "2px solid transparent",
+                  borderRadius: 0,
+                  "&:hover": {
+                    borderBottom: "2px solid #00e5ff",
+                  },
+                }}
               >
                 {item.label}
               </Button>
