@@ -14,6 +14,17 @@ const Home = () => {
   const handleViewProjectsClick = () => {
     navigate("/projects");
   };
+  const handleGithub = () => {
+    window.open("https://github.com/bipika-c", "_blank", "noopener,noreferrer");
+  };
+
+  const handleLinkedIn = () => {
+    window.open(
+      "https://www.linkedin.com/in/bipika-chaudhary-71b308281?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BrRh3EpEvRCmM394Gk4GTBA%3D%3D",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
   return (
     <>
       <Navbar />
@@ -41,6 +52,7 @@ const Home = () => {
               width: { xs: 200, md: 250 },
               height: { xs: 200, md: 250 },
               border: "4px solid #00e5ff",
+              mb: { xs: 2, md: 0 },
             }}
           />
         </Box>
@@ -121,6 +133,7 @@ const Home = () => {
               scale: 1.5,
               ":hover": { color: "grey", cursor: "pointer" },
             }}
+            onClick={handleGithub}
           />
           <LinkedIn
             sx={{
@@ -129,6 +142,7 @@ const Home = () => {
               mt: 2,
               ":hover": { color: "grey", cursor: "pointer" },
             }}
+            onClick={handleLinkedIn}
           />
         </Box>
       </Box>
