@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import { Box, Typography, TextField, Button, Grid, IconButton } from "@mui/material";
-import { GitHub, LinkedIn, Twitter, Instagram } from "@mui/icons-material";
+import { GitHub, LinkedIn, Facebook, Instagram } from "@mui/icons-material";
 
 const Contact = () => {
   return (
@@ -84,7 +84,7 @@ const Contact = () => {
             <Grid item>
               <IconButton
                 sx={{ color: "#00e5ff" }}
-                href="https://github.com"
+                href="https://github.com/bipika-c"
                 target="_blank"
               >
                 <GitHub />
@@ -93,7 +93,7 @@ const Contact = () => {
             <Grid item>
               <IconButton
                 sx={{ color: "#00e5ff" }}
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/bipika-chaudhary-71b308281/"
                 target="_blank"
               >
                 <LinkedIn />
@@ -102,16 +102,16 @@ const Contact = () => {
             <Grid item>
               <IconButton
                 sx={{ color: "#00e5ff" }}
-                href="https://twitter.com"
+                href="https://www.facebook.com/BipiikaaChaudhary"
                 target="_blank"
               >
-                <Twitter />
+                <Facebook />
               </IconButton>
             </Grid>
             <Grid item>
               <IconButton
                 sx={{ color: "#00e5ff" }}
-                href="https://instagram.com"
+                href="https://www.instagram.com/_.phuchuuu._/?__pwa=1"
                 target="_blank"
               >
                 <Instagram />
