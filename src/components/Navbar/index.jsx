@@ -119,6 +119,7 @@ function Navbar() {
           sx: {
             background: "rgba(26, 26, 64, 0.95)",
             color: "#f1f1f1",
+            width: 180,
           },
         }}
       >
