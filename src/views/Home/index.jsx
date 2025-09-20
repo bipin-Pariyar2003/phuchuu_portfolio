@@ -2,8 +2,16 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import { Box, Typography, Button, Avatar } from "@mui/material";
 import { Typewriter } from "react-simple-typewriter";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleHireMeClick = () => {
+    navigate("/contact");
+  };
+  const handleViewProjectsClick = () => {
+    navigate("/projects");
+  };
   return (
     <>
       <Navbar />
@@ -75,10 +83,20 @@ const Home = () => {
             about design and bringing ideas to life on the web. I specialize in Figma,
             HTML, CSS, JavaScript, and building responsive frontend projects.
           </Typography>
-          <Button variant="contained" color="primary" sx={{ mr: 2 }} href="#contact">
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ mr: 2 }}
+            onClick={handleHireMeClick}
+          >
             Hire Me
           </Button>
-          <Button variant="outlined" color="secondary" href="#projects">
+          <Button
+            variant="outlined"
+            color="secondary"
+            href="#projects"
+            onClick={handleViewProjectsClick}
+          >
             View Projects
           </Button>
         </Box>
