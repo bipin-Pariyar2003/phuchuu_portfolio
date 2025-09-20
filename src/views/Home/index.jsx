@@ -37,7 +37,15 @@ const Home = () => {
 
         {/* Text Section */}
         <Box>
-          <Typography variant="h2" sx={{ fontWeight: 700, mb: 2, color: "#00e5ff" }}>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 700,
+              mb: 2,
+              color: "#00e5ff",
+              fontSize: { xs: "1.5rem", md: "3rem" },
+            }}
+          >
             <Typewriter
               words={["Hi, I am Bipika Kumari Chaudhary"]}
               loop={0}
@@ -48,10 +56,21 @@ const Home = () => {
               delaySpeed={10000}
             />
           </Typography>
-          <Typography variant="h5" sx={{ mb: 3, color: "#f1f1f1" }}>
+          <Typography
+            variant="h5"
+            sx={{ mb: 3, color: "#f1f1f1", fontSize: { xs: "1rem", md: "1.5rem" } }}
+          >
             UI/UX Designer & Frontend Developer
           </Typography>
-          <Typography variant="body1" sx={{ mb: 3, maxWidth: 500, color: "#b0b0b0" }}>
+          <Typography
+            variant="body1"
+            sx={{
+              mb: 3,
+              maxWidth: 500,
+              color: "#b0b0b0",
+              fontSize: { xs: "0.8rem", md: "1rem" },
+            }}
+          >
             I craft beautiful and user-friendly interfaces with clean code. Passionate
             about design and bringing ideas to life on the web. I specialize in Figma,
             HTML, CSS, JavaScript, and building responsive frontend projects.
