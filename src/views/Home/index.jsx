@@ -4,6 +4,7 @@ import { Box, Typography, Button, Avatar } from "@mui/material";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
+import { GitHub, LinkedIn } from "@mui/icons-material";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Home = () => {
         }}
       >
         {/* Image Section */}
-        <Box sx={{ mb: { xs: 4, md: 0 }, mr: { md: 6 } }}>
+        <Box sx={{ mn: { xs: 4, md: 0 }, mr: { md: 6 } }}>
           <Avatar
             src="/bipika.png" // replace with actual image path
             alt="Bipika Kumari Chaudhary"
@@ -100,7 +101,7 @@ const Home = () => {
           >
             View Projects
           </Button>
-
+          <br />
           <Button
             variant="outlined"
             sx={{ mb: 2 }}
@@ -111,6 +112,24 @@ const Home = () => {
             <DownloadForOfflineIcon sx={{ mr: 1 }} />
             Download Resume
           </Button>
+          <br />
+
+          <GitHub
+            sx={{
+              ml: { xs: 0, md: 8 },
+              mt: 2,
+              scale: 1.5,
+              ":hover": { color: "grey", cursor: "pointer" },
+            }}
+          />
+          <LinkedIn
+            sx={{
+              ml: 4,
+              scale: 1.5,
+              mt: 2,
+              ":hover": { color: "grey", cursor: "pointer" },
+            }}
+          />
         </Box>
       </Box>
     </>
