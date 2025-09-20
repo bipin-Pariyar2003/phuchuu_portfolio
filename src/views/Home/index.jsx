@@ -8,12 +8,15 @@ import { GitHub, LinkedIn } from "@mui/icons-material";
 
 const Home = () => {
   const navigate = useNavigate();
+
   const handleHireMeClick = () => {
     navigate("/contact");
   };
+
   const handleViewProjectsClick = () => {
     navigate("/projects");
   };
+
   const handleGithub = () => {
     window.open("https://github.com/bipika-c", "_blank", "noopener,noreferrer");
   };
@@ -25,6 +28,7 @@ const Home = () => {
       "noopener,noreferrer"
     );
   };
+
   return (
     <>
       <Navbar />
@@ -65,25 +69,56 @@ const Home = () => {
               fontWeight: 700,
               mb: 2,
               color: "#00e5ff",
-              fontSize: { xs: "1.5rem", md: "3rem" },
+              fontSize: { xs: "1.2rem", md: "3rem" },
+              lineHeight: 1.3, // ensures consistent height
             }}
           >
-            <Typewriter
-              words={["Hi, I am Bipika Kumari Chaudhary"]}
-              loop={0}
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={10000}
-            />
+            {/* Container with fixed height */}
+            <Box
+              sx={{
+                position: "relative",
+                display: "inline-block",
+                minHeight: { xs: "2rem", md: "3.5rem" }, // reserve vertical space
+              }}
+            >
+              {/* Hidden placeholder to reserve width */}
+              <span style={{ visibility: "hidden", whiteSpace: "nowrap" }}>
+                Hi, I am Bipika Kumari Chaudhary
+              </span>
+
+              {/* Animated typewriter text */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  whiteSpace: "nowrap", // prevents wrapping to second line
+                }}
+              >
+                <Typewriter
+                  words={["Hi, I am Bipika Kumari Chaudhary"]}
+                  loop={0}
+                  cursor
+                  cursorStyle="_"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={10000}
+                />
+              </Box>
+            </Box>
           </Typography>
+
           <Typography
             variant="h5"
-            sx={{ mb: 3, color: "#f1f1f1", fontSize: { xs: "1rem", md: "1.5rem" } }}
+            sx={{
+              mb: 3,
+              color: "#f1f1f1",
+              fontSize: { xs: "1rem", md: "1.5rem" },
+            }}
           >
             UI/UX Designer & Frontend Developer
           </Typography>
+
           <Typography
             variant="body1"
             sx={{
@@ -97,6 +132,7 @@ const Home = () => {
             about design and bringing ideas to life on the web. I specialize in Figma,
             HTML, CSS, JavaScript, and building responsive frontend projects.
           </Typography>
+
           <Button
             variant="contained"
             color="primary"
@@ -105,6 +141,7 @@ const Home = () => {
           >
             Hire Me
           </Button>
+
           <Button
             variant="outlined"
             color="secondary"
@@ -114,13 +151,13 @@ const Home = () => {
             View Projects
           </Button>
           <br />
+
           <Button
             variant="outlined"
             sx={{ mb: 2 }}
             href="/Bipika_Kumari_Chaudhary_Resume.pdf"
             download
           >
-            {" "}
             <DownloadForOfflineIcon sx={{ mr: 1 }} />
             Download Resume
           </Button>
@@ -130,7 +167,7 @@ const Home = () => {
             sx={{
               ml: { xs: 0, md: 8 },
               mt: 2,
-              scale: 1.5,
+              scale: { xs: 1.2, md: 1.5 },
               ":hover": { color: "grey", cursor: "pointer" },
             }}
             onClick={handleGithub}
@@ -138,7 +175,7 @@ const Home = () => {
           <LinkedIn
             sx={{
               ml: 4,
-              scale: 1.5,
+              scale: { xs: 1.2, md: 1.5 },
               mt: 2,
               ":hover": { color: "grey", cursor: "pointer" },
             }}
