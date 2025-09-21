@@ -1,9 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
-import { Box, Typography, TextField, Button, Grid, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  IconButton,
+  Alert,
+} from "@mui/material";
 import { GitHub, LinkedIn, Facebook, Instagram } from "@mui/icons-material";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ type: "", message: "" });
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formDataWithTime = {
+      ...formData,
+      time: new Date().toLocaleString(),
+    };
+
+    emailjs
+      .send(
+        "bipin_gmail_1976", // 🔹 replace with your EmailJS Service ID
+        "template_u2bao7h", // 🔹 replace with your EmailJS Template ID
+        formDataWithTime,
+        "7wcq-gWY8bY03Dgpx" // 🔹 replace with your EmailJS Public Key
+      )
+      .then(
+        () => {
+          setStatus({
+            type: "success",
+            message: "✅ Message sent successfully!",
+          });
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error(error.text);
+          setStatus({
+            type: "error",
+            message: "❌ Failed to send message. Please try again later.",
+          });
+        }
+      );
+  };
+
   return (
     <>
       <Navbar />
@@ -24,7 +79,13 @@ const Contact = () => {
 
         <Typography
           variant="body1"
-          sx={{ mb: 4, maxWidth: 700, color: "#f1f1f1", mx: "auto", textAlign: "center" }}
+          sx={{
+            mb: 4,
+            maxWidth: 700,
+            color: "#f1f1f1",
+            mx: "auto",
+            textAlign: "center",
+          }}
         >
           I’m always open to new opportunities, collaborations, or just a friendly chat!
           Drop me a message below and I’ll get back to you as soon as possible.
@@ -33,6 +94,7 @@ const Contact = () => {
         {/* Contact Form */}
         <Box
           component="form"
+          onSubmit={handleSubmit}
           sx={{
             maxWidth: 700,
             mx: "auto",
@@ -42,38 +104,63 @@ const Contact = () => {
           }}
         >
           <TextField
+            name="name"
             label="Your Name"
             variant="filled"
             fullWidth
+            value={formData.name}
+            onChange={handleChange}
+            required
             InputProps={{
               sx: { backgroundColor: "rgba(255,255,255,0.05)", color: "#f1f1f1" },
             }}
             InputLabelProps={{ sx: { color: "#00e5ff" } }}
           />
           <TextField
+            name="email"
             label="Your Email"
+            type="email"
             variant="filled"
             fullWidth
+            value={formData.email}
+            onChange={handleChange}
+            required
             InputProps={{
               sx: { backgroundColor: "rgba(255,255,255,0.05)", color: "#f1f1f1" },
             }}
             InputLabelProps={{ sx: { color: "#00e5ff" } }}
           />
           <TextField
+            name="message"
             label="Your Message"
             variant="filled"
             fullWidth
             multiline
             rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            required
             InputProps={{
               sx: { backgroundColor: "rgba(255,255,255,0.05)", color: "#f1f1f1" },
             }}
             InputLabelProps={{ sx: { color: "#00e5ff" } }}
           />
-          <Button variant="contained" color="primary" sx={{ alignSelf: "flex-start" }}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ alignSelf: "flex-start" }}
+          >
             Send Message
           </Button>
         </Box>
+
+        {/* Success/Error message */}
+        {status.message && (
+          <Box sx={{ maxWidth: 700, mx: "auto", mt: 3 }}>
+            <Alert severity={status.type}>{status.message}</Alert>
+          </Box>
+        )}
 
         {/* Social Links */}
         <Box sx={{ mt: 6, textAlign: "center" }}>
