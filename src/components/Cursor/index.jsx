@@ -24,7 +24,7 @@ const Cursor = () => {
         borderRadius: "50%",
         backgroundColor: "rgba(0, 229, 255, 0.7)",
         transform: `translate(${position.x - 10}px, ${position.y - 10}px)`,
-        transition: "transform 0.05s ease-out",
+        transition: "transform 0.08s ease-out",
         zIndex: 9999,
         mixBlendMode: "difference", // optional for neon effect
       }}
