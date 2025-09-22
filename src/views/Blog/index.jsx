@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import {
   Box,
@@ -8,6 +8,11 @@ import {
   CardContent,
   CardActionArea,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
 
 const blogPosts = [
@@ -16,11 +21,15 @@ const blogPosts = [
     date: "Sep 15, 2025",
     summary:
       "Explore the latest trends in UI/UX design that are shaping digital experiences this year.",
+    description:
+      "Explore the latest trends in UI/UX design that are shaping digital experiences this year.",
   },
   {
     title: "How I Build Responsive Frontend Projects",
     date: "Aug 28, 2025",
     summary:
+      "Step-by-step approach to creating responsive and modern frontend designs using React and MUI.",
+    description:
       "Step-by-step approach to creating responsive and modern frontend designs using React and MUI.",
   },
   {
@@ -28,10 +37,41 @@ const blogPosts = [
     date: "Jul 12, 2025",
     summary:
       "Practical tips for aspiring designers to improve their UI/UX skills and portfolio.",
+    description:
+      "Practical tips for aspiring designers to improve their UI/UX skills and portfolio.",
+  },
+  {
+    title: "The Importance of Color Theory in Design",
+    date: "Jun 30, 2025",
+    summary:
+      "Understanding color theory and its impact on user experience and brand identity.",
+    description:
+      "Understanding color theory and its impact on user experience and brand identity.",
+  },
+  {
+    title: "My Journey into Frontend Development",
+    date: "May 20, 2025",
+    summary:
+      "A personal story of how I transitioned into frontend development and design.",
+    description:
+      "A personal story of how I transitioned into frontend development and design.",
   },
 ];
 
 const Blog = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+
+  const handleOpen = (post) => {
+    setSelectedPost(post);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedPost(null);
+  };
+
   return (
     <>
       <Navbar />
@@ -76,7 +116,12 @@ const Blog = () => {
                     </Typography>
                   </CardContent>
                   <Box sx={{ p: 2, textAlign: "right" }}>
-                    <Button size="small" variant="contained" color="primary">
+                    <Button
+                      size="small"
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleOpen(post)}
+                    >
                       Read More
                     </Button>
                   </Box>
@@ -86,6 +131,30 @@ const Blog = () => {
           ))}
         </Grid>
       </Box>
+
+      {/* Modal / Dialog */}
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+        {selectedPost && (
+          <>
+            <DialogTitle sx={{ color: "#00e5ff" }}>
+              {selectedPost.title}{" "}
+              <span style={{ color: "#b0b0b0", fontSize: "0.75rem" }}>
+                - {selectedPost.date}
+              </span>
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText sx={{ color: "#f1f1f1" }}>
+                {selectedPost.description}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="secondary" variant="contained">
+                Close
+              </Button>
+            </DialogActions>
+          </>
+        )}
+      </Dialog>
     </>
   );
 };
